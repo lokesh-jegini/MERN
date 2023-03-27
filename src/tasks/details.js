@@ -53,7 +53,8 @@ export function Detailspage() {
     description: Yup.string(),
     content: Yup.string().required('Please enter valid content '),
     category :Yup.string().required('Please enter category content'),
-    author: Yup.string().required('Please Select category'),
+    author: Yup.string(),
+    date:Yup.string().required('Please enter valid date '),
   })
 
 
@@ -68,16 +69,7 @@ export function Detailspage() {
     validationSchema: formSchema,
     onSubmit: (formValues) => {
       console.log(formValues);
-
- apiCall.post('/posts', {
-  //no-undef
-        "id": 20 + Math.floor(Math.random() * 100),
-        "title": `  Post`,
-        "content": `This is the post`,
-        "author": "John Doe",
-        "createdAt": "2022-01-01T00:00:00.000Z",
-       
-    })
+   apiCall.post('/posts', formValues)
       .then(res => {
         queryClient.invalidateQueries("all-posts");
       })
@@ -150,8 +142,25 @@ export function Detailspage() {
                 helperText={errors.content}
               />
             </Grid>
+
             <Grid item xs={12}>
-  
+            <TextField
+                autoComplete="given-name"
+                name="date"
+                required
+                type="date"
+                fullWidth
+                id="date "
+                label="date "
+                autoFocus
+                value={values.date}
+                onChange={handleChange('date')}
+                helperText={errors.date}
+              />
+
+              </Grid>
+
+     <Grid item xs={12}>
       <Box
       component="form"
       sx={{

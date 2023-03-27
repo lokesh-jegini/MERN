@@ -4,6 +4,15 @@
       "id": 1,
       "title": "json-server",
       "author": "typicode"
+    },
+    {
+      "title": "ASDFASDF",
+      "description": "ASF",
+      "content": "ASDFAS",
+      "date": "2023-03-29",
+      "category": "Travel",
+      "author": "ASDFASDF",
+      "id": 2
     }
   ],
   "comments": [
